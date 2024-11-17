@@ -1,7 +1,14 @@
 const App = {
   data() {
     return {
-      counter: 0
+      title: "Notes list",
+      placeholderText: "Enter note here",
+      inputValue: ""
+    }
+  },
+  methods: {
+    inputChangeHandler(e) {
+      this.inputValue = e.target.value;
     }
   }
 }
