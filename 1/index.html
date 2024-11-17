@@ -22,11 +22,15 @@
         </div>
         <button class="btn" v-on:click="addNewNote">Add</button>
         <hr />
-        <ul class="list">
-          <li class="list-item" v-for="note in notes">
-            {{note}}
+        <ul class="list" v-if="notes.length">
+          <li class="list-item" v-for="(note, noteIndex) in notes">
+            {{noteIndex + 1}}: {{note}}
+            <button class="btn danger" v-on:click="deleteNote(noteIndex)">Delete</button>
           </li>
         </ul>
+        <div v-else>
+          No notes found. Add a new note.
+        </div>
 			</div>
 		</div>
 
