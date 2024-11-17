@@ -17,11 +17,16 @@
             v-bind:placeholder="placeholderText"
             v-bind:value="inputValue"
             v-on:input="inputChangeHandler"
+            v-on:keydown.enter="addNewNote"
           />
         </div>
-        <p>inputValue: {{inputValue}}</p>
-        <button class="btn">Add</button>
+        <button class="btn" v-on:click="addNewNote">Add</button>
         <hr />
+        <ul class="list">
+          <li class="list-item" v-for="note in notes">
+            {{note}}
+          </li>
+        </ul>
 			</div>
 		</div>
 
