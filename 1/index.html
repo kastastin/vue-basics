@@ -5,44 +5,33 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Vue Basics</title>
 		<link rel="stylesheet" href="theme.css" />
-	</head>
-	<body>
 
-		<div id="app" class="container">
-			<div class="card">
-				<h1 :style="{color: inputValue.length > 5 ? 'darkblue' : 'black'}">{{title}}</h1>
-        <div class="form-control">
-          <input
-            type="text"
-            :placeholder="placeholderText"
-            :value="inputValue"
-            v-model="inputValue"
-            @keydown.enter="addNewNote"
-          />
-        </div>
-        <button class="btn" @click="addNewNote">Add</button>
-        <hr />
-        <ul class="list" v-if="notes.length">
-          <li class="list-item" v-for="(note, noteIndex) in notes">
-             <!--
-               <span :class="{'primary': true, 'bold': note.length < 5}">
-                 {{noteIndex + 1}}: {{toUpperCase(note)}}
-               </span>
-             -->
-             <span :class="['primary', {'bold': note.length < 5}]">
-               {{noteIndex + 1}}: {{toUpperCase(note)}}
-             </span>
-            <button class="btn danger" @click="deleteNote(noteIndex)">Delete</button>
-          </li>
-          <hr />
-          <li>
-            <strong>Total: {{notes.length}}</strong> | Doubled: {{doubleCountComputed}}
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+	</head>
+
+	<body>
+		<div id="app" class="container pt-5" v-cloak>
+      <div class="card center">
+        <ul class="list" v-if="colors.length">
+          <!-- <li class="list-item" v-for="(value, key) in person"> -->
+          <!--   <strong>{{key}}</strong> - <span>{{value}}</span> -->
+          <!-- </li> -->
+          <li
+            class="list-item"
+            :style="{cursor: 'not-allowed'}"
+            v-for="(color, index) in colors"
+            @click="colors.splice(index, 1)"
+          >
+            <span>{{index + 1}}.</span>
+            <strong>{{color}}</strong>
           </li>
         </ul>
-        <div v-else>
-          No notes found. Add a new note.
-        </div>
-			</div>
+        <h3 v-show="!colors.length">No colors</h3>
+      </div>
 		</div>
 
 		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>

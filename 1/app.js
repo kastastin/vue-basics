@@ -1,37 +1,12 @@
 const App = {
-  data() {
-    return {
-      title: "Notes list",
-      placeholderText: "Enter note here",
-      inputValue: "",
-      notes: ['First note', 'Second note'],
-    }
-  },
-  methods: {
-    addNewNote() {
-      if (this.inputValue) {
-        this.notes.push(this.inputValue);
-        this.inputValue = "";
-      }
+  data: () => ({
+    person: {
+      firsName: 'Bob',
+      lastName: 'Builder',
+      age: 20,
     },
-    deleteNote(index) {
-      this.notes.splice(index, 1);
-    },
-    toUpperCase(str) {
-      return str.toUpperCase();
-    }
-  },
-  computed: {
-    doubleCountComputed() {
-      return this.notes.length * 2;
-    }
-  },
-  watch: {
-    inputValue(value) {
-      if (value.length > 10) this.inputValue = "";
-    }
-  }
+    colors: ['yellow', 'blue', 'white'],
+  })
 }
 
-Vue.createApp(App).mount("#app")
-
+Vue.createApp(App).mount("#app");
