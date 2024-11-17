@@ -10,22 +10,33 @@
 
 		<div id="app" class="container">
 			<div class="card">
-				<h1>{{title}}</h1>
+				<h1 :style="{color: inputValue.length > 5 ? 'darkblue' : 'black'}">{{title}}</h1>
         <div class="form-control">
           <input
             type="text"
-            v-bind:placeholder="placeholderText"
-            v-bind:value="inputValue"
-            v-on:input="inputChangeHandler"
-            v-on:keydown.enter="addNewNote"
+            :placeholder="placeholderText"
+            :value="inputValue"
+            v-model="inputValue"
+            @keydown.enter="addNewNote"
           />
         </div>
-        <button class="btn" v-on:click="addNewNote">Add</button>
+        <button class="btn" @click="addNewNote">Add</button>
         <hr />
         <ul class="list" v-if="notes.length">
           <li class="list-item" v-for="(note, noteIndex) in notes">
-            {{noteIndex + 1}}: {{note}}
-            <button class="btn danger" v-on:click="deleteNote(noteIndex)">Delete</button>
+             <!--
+               <span :class="{'primary': true, 'bold': note.length < 5}">
+                 {{noteIndex + 1}}: {{toUpperCase(note)}}
+               </span>
+             -->
+             <span :class="['primary', {'bold': note.length < 5}]">
+               {{noteIndex + 1}}: {{toUpperCase(note)}}
+             </span>
+            <button class="btn danger" @click="deleteNote(noteIndex)">Delete</button>
+          </li>
+          <hr />
+          <li>
+            <strong>Total: {{notes.length}}</strong> | Doubled: {{doubleCountComputed}}
           </li>
         </ul>
         <div v-else>

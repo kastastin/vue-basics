@@ -8,15 +8,27 @@ const App = {
     }
   },
   methods: {
-    inputChangeHandler(e) {
-      this.inputValue = e.target.value;
-    },
     addNewNote() {
-      this.notes.push(this.inputValue);
-      this.inputValue = "";
+      if (this.inputValue) {
+        this.notes.push(this.inputValue);
+        this.inputValue = "";
+      }
     },
     deleteNote(index) {
       this.notes.splice(index, 1);
+    },
+    toUpperCase(str) {
+      return str.toUpperCase();
+    }
+  },
+  computed: {
+    doubleCountComputed() {
+      return this.notes.length * 2;
+    }
+  },
+  watch: {
+    inputValue(value) {
+      if (value.length > 10) this.inputValue = "";
     }
   }
 }
