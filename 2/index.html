@@ -12,26 +12,14 @@
   </head>
   <body>
     <header>
-      <h1>Vue.js Goals</h1>
+      <h1>Vue.js Goal</h1>
     </header>
 
-    <section id="user-goal v-cloak">
+    <section id="user-goal" v-cloak>
       <h2>My Goal</h2>
-      <p></p>
+      <p>{{ outputGoal() }}</p>
+      <p>Learn more about <a :href="vueLink" target="_blank">Vue</a></p>
     </section>
-
-    <!-- <div> -->
-    <!--   <label for="goal">Goal</label> -->
-    <!--   <input id="goal" type="text" v-model="enteredGoal" @keyup.enter="addGoal" /> -->
-    <!--   <button @click="addGoal">Add Goal</button> -->
-    <!-- </div> -->
-    <!-- <ul v-if="goals.length"> -->
-    <!--   <li v-for="(goal, index) in goals" :key="goal"> -->
-    <!--     <p>{{ goal }}</p> -->
-    <!--     <button @click="removeGoal">Remove</button> -->
-    <!--   </li> -->
-    <!-- </ul> -->
-    <!-- <p v-else>No goals yet. Add a new one.</p> -->
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="app.js"></script>

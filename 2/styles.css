@@ -10,6 +10,14 @@ body {
   margin: 0;
 }
 
+a {
+  color: inherit;
+}
+
+[v-cloak] {
+  display: none;
+}
+
 header {
   max-width: 40rem;
   width: 90%;

@@ -1,32 +1,14 @@
-const options = {
+const app = Vue.createApp({
   data: () => ({
-    goals: [],
-    enteredGoal: "",
+    goalA: "Learn Vue",
+    goalB: "Master Vue and build amazing apps",
+    vueLink: "https://vuejs.org/",
   }),
   methods: {
-    addGoal() {
-      if (this.enteredGoal) this.goals.push(this.enteredGoal);
-      this.enteredGoal = "";
-    },
-    removeGoal() {
-      this.goals.splice(this.goals.indexOf(this.enteredGoal), 1);
+    outputGoal() {
+      return Math.random() < 0.5 ? this.goalA : this.goalB;
     },
   },
-};
+});
 
-Vue.createApp(options).mount("#user-goal");
-
-// --- Native JS ---
-// const listEl = document.querySelector('ul');
-// const inputEl = document.querySelector('input');
-// const buttonEl = document.querySelector('button');
-//
-// function addGoal() {
-//   const enteredValue = inputEl.value;
-//   const listItemEl = document.createElement('li');
-//   listItemEl.textContent = enteredValue;
-//   listEl.appendChild(listItemEl);
-//   inputEl.value = '';
-// }
-//
-// buttonEl.addEventListener('click', addGoal);
+app.mount("#user-goal");
