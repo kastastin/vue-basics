@@ -2,20 +2,8 @@ const h = Vue.h;
 
 const app = Vue.createApp({
   data: () => ({
-    title: "From template/render",
+    title: "From render",
   }),
-  methods: {
-    changeTitle(text) {
-      this.title = text;
-      console.log(this);
-    },
-  },
-  // template: `
-  //   <div class="card center">
-  //     <h1>{{title}}</h1>
-  //     <button class="btn" @click="title='Changed title'">Change</button>
-  //   </div>
-  // `,
   render() {
     return h('div', {
       class: 'card center',
@@ -23,11 +11,42 @@ const app = Vue.createApp({
       h('h1', {}, this.title),
       h('button', {
         class: 'btn',
-        // onClick: () => this.title = 'Changed title',
-        onClick: () => this.changeTitle('Changed title'),
+        onClick: () => this.title = 'Changed title',
       }, 'Change'),
     ]);
+  },
+  beforeCreate() {
+    console.log('beforeCreate');
+  },
+  created() {
+    console.log('created');
+  },
+  beforeMount() {
+    console.log('beforeMount');
+  },
+  mounted() {
+    console.log('mounted');
+  },
+  beforeUnmount() {
+    console.log('beforeUnmount');
+  },
+  unmounted() {
+    console.log('unmounted');
+  },
+  beforeUpdate() {
+    console.log('beforeUpdate');
+  },
+  updated() {
+    console.log('updated');
   },
 });
 
 app.mount('#app');
+
+// setTimeout(() => {
+//   app.unmount();
+// }, 2000);
+
+Vue.createApp({
+  data: () => ({title: 'Second app title'})
+}).mount('#app2');
