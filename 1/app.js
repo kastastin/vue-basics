@@ -1,15 +1,32 @@
-const App = {
+const h = Vue.h;
+
+const app = Vue.createApp({
   data: () => ({
-    items: [1, 2, 3, 4, 5],
+    title: "From template/render",
   }),
   methods: {
-    remove(i) {
-      this.items.splice(i, 1);
-    },
-    log(item) {
-      console.log(`Item: ${item} was deleted`);
+    changeTitle(text) {
+      this.title = text;
     },
   },
-};
+  // template: `
+  //   <div class="card center">
+  //     <h1>{{title}}</h1>
+  //     <button class="btn" @click="title='Changed title'">Change</button>
+  //   </div>
+  // `,
+  render() {
+    return h('div', {
+      class: 'card center',
+    }, [
+      h('h1', {}, this.title),
+      h('button', {
+        class: 'btn',
+        // onClick: () => this.title = 'Changed title',
+        onClick: () => this.changeTitle('Changed title'),
+      }, 'Change'),
+    ]);
+  },
+});
 
-Vue.createApp(App).mount("#app");
+app.mount('#app');
