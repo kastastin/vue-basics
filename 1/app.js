@@ -7,6 +7,7 @@ const app = Vue.createApp({
   methods: {
     changeTitle(text) {
       this.title = text;
+      console.log(this);
     },
   },
   // template: `
