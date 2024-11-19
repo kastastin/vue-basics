@@ -15,81 +15,109 @@ body {
 }
 
 header {
-  margin: 3rem;
-  padding: 1rem;
-  border-radius: 10px;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  background-color: #1b995e;
+  background-color: #880017;
   color: white;
   text-align: center;
 }
 
-#user-goals {
-  margin: 3rem;
-  padding: 1rem;
-  border-radius: 10px;
+section {
+  width: 90%;
+  max-width: 40rem;
+  margin: auto;
+}
+
+.healthbar {
+  width: 100%;
+  height: 40px;
+  margin: 1rem 0;
+  border: 1px solid #575757;
+  background: #fde5e5;
+}
+
+.healthbar__value {
+  width: 100%;
+  height: 100%;
+  background-color: #00a876;
+}
+
+.container {
+  margin: 1rem auto;
+  padding: 0.5rem;
+  border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   text-align: center;
 }
 
-#user-goals h2 {
-  margin: 0 0 1rem 0;
-  border-bottom: 4px solid #ccc;
-  color: #1b995e;
-  font-size: 2rem;
+#monster h2,
+#player h2 {
+  margin: 0.25rem;
 }
 
-#user-goals ul {
-  margin: 1rem 0;
+#controls {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  width: 12rem;
+  margin: 1rem;
+  padding: 1rem 2rem;
+  border: 1px solid #88005b;
+  border-radius: 12px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+  background-color: #88005b;
+  color: white;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover,
+button:active {
+  border-color: #af0a78;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.26);
+  background-color: #af0a78;
+}
+
+button:disabled {
+  border-color: #ccc;
+  box-shadow: none;
+  background-color: #ccc;
+  color: #3f3f3f;
+  cursor: not-allowed;
+}
+
+#log ul {
+  margin: 0;
   padding: 0;
   list-style: none;
 }
 
-#user-goals li {
-  margin: 1rem 0;
-  padding: 0.5rem;
-  border-radius: 25px;
-  border: 2px solid transparent;
-  background-color: #8ddba4;
-  color: #1f1f1f;
-  font-size: 1.25rem;
-  font-weight: bold;
-  cursor: pointer;
+#log li {
+  margin: 0.5rem 0;
 }
 
-#user-goals li:hover {
-  border: 2px solid red;
-  color: darkred;
+.log--player {
+  color: #7700ff;
 }
 
-#user-goals p {
-  cursor: pointer;
+.log--monster {
+  color: #da8d00;
 }
 
-#user-goals input {
-  border: 1px solid #ccc;
-  font: inherit;
+.log--damage {
+  color: red;
 }
 
-#user-goals input:focus {
-  outline: none;
-  border-color: #1b995e;
-  background-color: #d7fdeb;
-}
-
-#user-goals button {
-  padding: 0.05rem 1rem;
-  border: 1px solid #ff0077;
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.26);
-  background-color: #ff0077;
-  color: white;
-  font: inherit;
-  cursor: pointer;
-}
-
-#user-goals button:hover,
-#user-goals button:active {
-  border-color: #ec3169;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
-  background-color: #ec3169;
+.log--heal {
+  color: green;
 }
