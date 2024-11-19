@@ -19,12 +19,12 @@ header {
   padding: 1rem;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  background-color: #4fc08d;
+  background-color: #1b995e;
   color: white;
   text-align: center;
 }
 
-#styling {
+#user-goals {
   margin: 3rem;
   padding: 1rem;
   border-radius: 10px;
@@ -32,14 +32,64 @@ header {
   text-align: center;
 }
 
-.demo {
-  width: calc(100% - 32px);
-  height: 100px;
-  margin: 16px;
-  border: 2px dashed #ccc;
+#user-goals h2 {
+  margin: 0 0 1rem 0;
+  border-bottom: 4px solid #ccc;
+  color: #1b995e;
+  font-size: 2rem;
 }
 
-.active {
-  border-color: red;
-  background-color: salmon;
+#user-goals ul {
+  margin: 1rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+#user-goals li {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  border-radius: 25px;
+  border: 2px solid transparent;
+  background-color: #8ddba4;
+  color: #1f1f1f;
+  font-size: 1.25rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#user-goals li:hover {
+  border: 2px solid red;
+  color: darkred;
+}
+
+#user-goals p {
+  cursor: pointer;
+}
+
+#user-goals input {
+  border: 1px solid #ccc;
+  font: inherit;
+}
+
+#user-goals input:focus {
+  outline: none;
+  border-color: #1b995e;
+  background-color: #d7fdeb;
+}
+
+#user-goals button {
+  padding: 0.05rem 1rem;
+  border: 1px solid #ff0077;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.26);
+  background-color: #ff0077;
+  color: white;
+  font: inherit;
+  cursor: pointer;
+}
+
+#user-goals button:hover,
+#user-goals button:active {
+  border-color: #ec3169;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+  background-color: #ec3169;
 }

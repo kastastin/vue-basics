@@ -1,21 +1,18 @@
 const app = Vue.createApp({
   data: () => ({
-    boxStates: {
-      A: false,
-      B: false,
-      C: false,
-    },
+    notes: [],
+    enteredNoteValue: "",
   }),
   methods: {
-    toggleBoxSelection(box) {
-      this.boxStates[box] = !this.boxStates[box];
+    addNote() {
+      this.notes.push(this.enteredNoteValue);
+      this.enteredNoteValue = "";
     },
-  },
-  computed: {
-    boxBClasses() {
-      return {active: this.boxStates.B};
+    removeNote(index) {
+      this.notes.splice(index, 1);
     },
   },
 });
 
-app.mount('#styling');
+app.mount('#user-goals');
+

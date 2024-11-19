@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vue Dynamic Styling</title>
+    <title>Render conditional content, lists</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
       rel="stylesheet"
@@ -12,24 +12,19 @@
   </head>
   <body>
     <header>
-      <h1>Vue Dynamic Styling</h1>
+      <h1>Vue Notes</h1>
     </header>
 
-    <section id="styling" v-cloak>
-      <!-- <div class="demo" :style="{borderColor: boxStates.A ? 'red' : '#ccc'}" @click="toggleBoxSelection('A')"></div> -->
-      <!-- <div :class="boxStates.A ? 'demo active' : 'demo'" @click="toggleBoxSelection('A')"></div> -->
-      <!-- <div :class="{demo: true, active: boxStates.A}" @click="toggleBoxSelection('A')"></div> -->
-      <div class="demo"
-           :class="{active: boxStates.A}"
-           @click="toggleBoxSelection('A')"
-      ></div>
-      <div class="demo"
-           :class="boxBClasses"
-           @click="toggleBoxSelection('B')"
-      ></div>
-      <div :class="['demo', {active: boxStates.C}]"
-           @click="toggleBoxSelection('C')"
-      ></div>
+    <section id="user-goals" v-cloak>
+      <h2>My notes</h2>
+      <input type="text" v-model="enteredNoteValue" @keydown.enter="addNote" />
+      <button @click="addNote">Add Note</button>
+      <p v-if="!notes.length">No notes have been added yet - please start adding some!</p>
+      <ul v-else>
+        <li title="Click to delete note." v-for="(note, index) in notes" :key="note" @click="removeNote(index)">
+          <p>{{ note }}</p>
+        </li>
+      </ul>
     </section>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
