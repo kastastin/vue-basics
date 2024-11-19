@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vue Basics</title>
+    <title>Vue Events</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
       rel="stylesheet"
@@ -12,13 +12,25 @@
   </head>
   <body>
     <header>
-      <h1>Vue.js Goal</h1>
+      <h1>Vue Events</h1>
     </header>
 
-    <section id="user-goal" v-cloak>
-      <h2>My Goal</h2>
-      <p>{{ outputGoal() }}</p>
-      <p>Learn more about <a :href="vueLink" target="_blank">Vue</a></p>
+    <section id="events" v-cloak>
+      <h2>Events in Action</h2>
+      <button @click="incrementCounter(10)">Add 10</button>
+      <button @click="decrementCounter(5);">Subtract 5</button>
+      <p>Counter: {{ counter }}</p>
+
+      <input type="text" placeholder="Enter text..." ref="input" @keydown.enter="setInputValue" />
+      <button type="reset" @click="resetInput">Reset Input</button>
+      <p>{{ inputValue }}</p>
+
+      <form @submit.prevent="submitForm">
+        <input type="text" v-model="firstname" />
+        <input type="text" v-model="lastname" />
+        <button type="submit">Sign Up</button>
+      </form>
+      <p>{{ fullname }}</p>
     </section>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
