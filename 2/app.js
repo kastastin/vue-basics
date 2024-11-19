@@ -1,42 +1,21 @@
 const app = Vue.createApp({
-  data() {
-    return {
-      counter: 0,
-      inputValue: "☝️ Type something and press 'Enter' to see an output",
-      firstname: "",
-      lastname: "",
-    };
-  },
+  data: () => ({
+    boxStates: {
+      A: false,
+      B: false,
+      C: false,
+    },
+  }),
   methods: {
-    incrementCounter(amount = 1) {
-      this.counter += amount;
-      console.log('------');
-    },
-    decrementCounter(amount = 1) {
-      this.counter -= amount;
-    },
-    setInputValue(e) {
-      this.inputValue = e.target.value;
-      this.resetInput();
-    },
-    resetInput() {
-      this.$refs.input.value = "";
-      this.$refs.input.focus();
-    },
-    submitForm() {
-      alert('Submitted!');
-    },
-  },
-  watch: {
-    counter(newValue) {
-      this.$refs.input.value = newValue;
+    toggleBoxSelection(box) {
+      this.boxStates[box] = !this.boxStates[box];
     },
   },
   computed: {
-    fullname() {
-      return this.firstname + ' ' + this.lastname;
+    boxBClasses() {
+      return {active: this.boxStates.B};
     },
   },
 });
 
-app.mount('#events');
+app.mount('#styling');
