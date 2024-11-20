@@ -1,41 +1,42 @@
-Vue.createApp({
+const app = Vue.createApp({
   data: () => ({
-    message: 'Vue is great!',
+    friends: [
+      {
+        id: 'manuel',
+        name: 'Manuel Lorenz',
+        phone: '01234 5678 991',
+        email: 'manuel@localhost.com',
+      },
+      {
+        id: 'julie',
+        name: 'Julie Jones',
+        phone: '09876 543 221',
+        email: 'julie@localhost.com',
+      },
+    ],
   }),
-  methods: {
-    saveInput(e) {
-      this.currentUserInput = e.target.value;
-    },
-    setText() {
-      this.message = this.$refs.userText.value;
-      console.dir(this.$refs.userText);
-    },
-  },
-}).mount("#app");
-
-Vue.createApp({
-  template: `
-    <p>{{ meal }}</p>
-  `,
-  data: () => ({
-    meal: 'Pizza',
-  }),
-}).mount("#app2");
-
-// --- Proxy (Native JS) ---
-const messages = {
-  message: 'Hello',
-  longMessage: 'Hello world!',
-};
-
-const proxy = new Proxy(messages, {
-  set(target, key, value) {
-    if (key === "message") {
-      target.longMessage = value + " world!";
-    }
-    target.message = value;
-  },
 });
 
-proxy.message = 'Bye';
-console.log(proxy.longMessage);
+app.component('friend-contact', {
+  props: ['friend'],
+  data: () => ({
+    detailsAreVisible: false,
+  }),
+  methods: {
+    toggleDetails() {
+      this.detailsAreVisible = !this.detailsAreVisible;
+    },
+  },
+  template: `
+    <li>
+      <h2>{{ friend.name }}</h2>
+      <button @click="toggleDetails">{{ detailsAreVisible ? 'Hide Details' : 'Show Details' }}</button>
+      <ul v-if="detailsAreVisible">
+        <li><strong>Phone:</strong> {{ friend.phone }}</li>
+        <li><strong>Email:</strong> {{ friend.email }}</li>
+      </ul>
+    </li>
+  `,
+});
+
+app.mount('#app');
