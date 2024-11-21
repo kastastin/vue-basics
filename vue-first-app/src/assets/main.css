@@ -12,6 +12,17 @@ body {
   margin: 0;
 }
 
+.card {
+  position: relative;
+  width: 90%;
+  max-width: 40rem;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  text-align: center;
+}
+
 ul {
   margin: 0;
   padding: 0;
