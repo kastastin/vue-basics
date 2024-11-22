@@ -38,6 +38,8 @@
   const activateTopic = (topicId) => {
     activeTopic.value = topics.value.find((topic) => topic.id === topicId);
   };
+
+  provide('selectTopic', activateTopic);
 </script>
 
 <template>
@@ -46,6 +48,6 @@
       :topic-title="activeTopic && activeTopic.title"
       :text="activeTopic && activeTopic.fullText"
     />
-    <KnowledgeBase :topics="topics" @select-topic="activateTopic" />
+    <KnowledgeBase />
   </div>
 </template>
