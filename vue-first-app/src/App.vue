@@ -1,68 +1,38 @@
 <script setup>
   import { ref } from 'vue';
-  import MyCounter from '@/components/MyCounter.vue';
-  import NewFriend from '@/components/NewFriend.vue';
-  import FriendContact from '@/components/FriendContact.vue';
+  import ActiveElement from '@/components/ActiveElement.vue';
+  import KnowledgeBase from '@/components/KnowledgeBase.vue';
 
-  const friends = ref([
+  const activeTopic = ref(null);
+  const topics = [
     {
-      id: 'manuel',
-      name: 'Manuel Lorenz',
-      phone: '01234 5678 991',
-      email: 'manuel@localhost.com'
+      id: 'basics',
+      title: 'The Basics',
+      description: 'Core Vue basics you have to know',
+      fullText:
+        'Vue is a great framework and it has a couple of key concepts: Data binding, events, components and reactivity - that should tell you something!'
     },
     {
-      id: 'julie',
-      name: 'Julie Jones',
-      phone: '09876 543 221',
-      email: 'julie@localhost.com'
+      id: 'components',
+      title: 'Components',
+      description:
+        'Components are a core concept for building Vue UIs and apps',
+      fullText:
+        'With components, you can split logic (and markup) into separate building blocks and then combine those building blocks (and re-use them) to build powerful user interfaces.'
     }
-  ]);
+  ];
 
-  const addFriend = (data) => {
-    friends.value.push({
-      id: data.id,
-      name: data.name,
-      phone: data.phone,
-      email: data.email
-    });
-    data.resetForm();
-  };
-
-  const deleteFriend = (id) => {
-    friends.value = friends.value.filter(friend => friend.id !== id);
+  const activateTopic = (topicId) => {
+    activeTopic.value = topics.find((topic) => topic.id === topicId);
   };
 </script>
 
 <template>
-  <header>
-    <h1>FriendList</h1>
-  </header>
-  <NewFriend @form-handler="addFriend" />
-  <section>
-    <ul>
-      <FriendContact
-        :friend="friend"
-        v-for="friend in friends"
-        key="friend.id"
-        @button-handler="deleteFriend" />
-    </ul>
-  </section>
-  <section v-show="false">
-    <MyCounter />
-  </section>
+  <div>
+    <ActiveElement
+      :topic-title="activeTopic && activeTopic.title"
+      :text="activeTopic && activeTopic.fullText"
+    />
+    <KnowledgeBase :topics="topics" @select-topic="activateTopic" />
+  </div>
 </template>
-
-<style scoped>
-  header {
-    width: 90%;
-    max-width: 40rem;
-    margin: 3rem auto;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-    background-color: #58004d;
-    color: white;
-    text-align: center;
-  }
-</style>

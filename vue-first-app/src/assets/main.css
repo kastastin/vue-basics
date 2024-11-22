@@ -12,28 +12,43 @@ body {
   margin: 0;
 }
 
-.card {
-  position: relative;
-  width: 90%;
-  max-width: 40rem;
-  margin: 1rem auto;
-  padding: 1rem;
-  border-radius: 10px;
+section {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  text-align: center;
+  margin: 2rem auto;
+  max-width: 40rem;
+  padding: 1rem;
+  border-radius: 12px;
 }
 
 ul {
+  display: flex;
+  justify-content: center;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+li {
+  width: 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 1rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+}
+
+h2 {
+  margin: 0.75rem 0;
+  text-align: center;
+}
+
 button {
-  padding: 0.05rem 1rem;
-  border: 1px solid #ff0077;
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.26);
-  background-color: #ff0077;
+  padding: 0.75rem 2rem;
+  border: 1px solid #c70053;
+  border-radius: 30px;
+  background-color: #c70053;
   color: white;
   font: inherit;
   cursor: pointer;
@@ -41,7 +56,6 @@ button {
 
 button:hover,
 button:active {
-  border-color: #ec3169;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
-  background-color: #ec3169;
+  border-color: #e24d8b;
+  background-color: #e24d8b;
 }
