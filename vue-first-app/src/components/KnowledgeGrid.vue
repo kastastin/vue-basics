@@ -1,7 +1,8 @@
 <script setup>
+  import { inject } from 'vue';
   import KnowledgeElement from '@/components/KnowledgeElement.vue';
 
-  defineProps(['topics']);
+  const topics = inject('topics');
   defineEmits(['select-topic']);
 </script>
 
